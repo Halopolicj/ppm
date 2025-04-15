@@ -9,10 +9,10 @@ import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 
-public class ExampleJavaMod extends Mod{
+public class PermafrostMod extends Mod{
 
-    public ExampleJavaMod(){
-        Log.info("Loaded ExampleJavaMod constructor.");
+    public PermafrostMod(){
+        Log.info("Loaded PermafrostMod constructor.");
 
         //listen for game load event
         Events.on(ClientLoadEvent.class, e -> {
