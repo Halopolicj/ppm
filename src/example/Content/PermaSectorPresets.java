@@ -1,6 +1,7 @@
-package Frozen.Content;
+package example.Content;
 
 import mindustry.type.SectorPreset;
+import example.Content.PermaPlanets;
 public class PermaSectorPresets {
     public static SectorPreset Beginning;
 
