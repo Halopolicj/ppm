@@ -1,4 +1,4 @@
-package Frozen.Content;
+package example.Content;
 
 import mindustry.type.SectorPreset;
 public class PermaSectorPresets {
