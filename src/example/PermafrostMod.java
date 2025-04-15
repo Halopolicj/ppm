@@ -8,6 +8,9 @@ import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
+import example.Content.PermaItems;
+import example.Contemt.PermaPlanets;
+import example.Content.PermaSectorPresets;
 
 public class PermafrostMod extends Mod{
 
@@ -46,6 +49,7 @@ public class PermafrostMod extends Mod{
         //MindyTechTree.load();
         PermaItems.load();
         PermaPlanets.load();
+        PermaSectorPresets.load();
     }
 
 }
