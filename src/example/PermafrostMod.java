@@ -31,6 +31,21 @@ public class PermafrostMod extends Mod{
     @Override
     public void loadContent(){
         Log.info("Loading some example content.");
+        // stolen from BetaMindy hehehe :troll:
+        //OverWriter.load();
+        //MindyStatusEffects.load();
+        //MindyLiquids.load();
+        // MindyItems.load();
+        //MindyBullets.load();
+        //ShopItems.load();
+        //FireColor.load();
+        //MindyBlocks.load();
+        //MindyWeathers.load();
+        //MindyPlanets.load();
+        //MindySectors.load();
+        //MindyTechTree.load();
+        PermaItems.load();
+        PermaPlanets.load();
     }
 
 }
