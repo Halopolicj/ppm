@@ -8,7 +8,7 @@ name: "ppm"
 author: "You"
 
 #the fully qualified main class of the mod
-main: "PermafrostMod"
+main: "example.PermafrostMod"
 
 #the mod description as seen in the mod dialog
 description: "not yet."
