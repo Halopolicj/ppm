@@ -2,15 +2,13 @@ package example;
 
 import arc.*;
 import arc.util.*;
+import example.Content.*;
 import mindustry.*;
 import mindustry.content.*;
 import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
-import example.Content.PermaItems;
-import example.Content.PermaPlanets;
-import example.Content.PermaSectorPresets;
 
 public class PermafrostMod extends Mod{
 
@@ -47,7 +45,9 @@ public class PermafrostMod extends Mod{
         //MindyPlanets.load();
         //MindySectors.load();
         //MindyTechTree.load();
+        PermaAttributes.load();
         PermaItems.load();
+        PermaBlocks.load();
         PermaPlanets.load();
         PermaSectorPresets.load();
     }
