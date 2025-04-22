@@ -4,6 +4,7 @@ import mindustry.world.Block;
 import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.environment.StaticWall;
+import mindustry.world.blocks.production.Drill;
 import mindustry.world.meta.Attribute;
 import example.Content.PermaAttributes;
 
@@ -15,7 +16,9 @@ public class PermaBlocks {
     floorNickel,
 
     // walls
-    wallGallium;
+    wallGallium,
+
+    basicDrill;
     public static  void load(){
         floorNickel = new OreBlock("floor-nickel-ore") {{
             itemDrop = nickel;
@@ -36,5 +39,11 @@ public class PermaBlocks {
            //attributes.set(Attribute.get("Gallium"), .09f);
         }};
 
+        basicDrill = new Drill("basic-drill") {{
+            drillTime = 10f;
+            health = 100;
+            tier = 2;
+            squareSprite = true;
+        }};
     }
 }
