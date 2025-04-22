@@ -39,7 +39,7 @@ public class PermaBlocks {
         }};
 
         basicDrill = new Drill("basic-drill") {{
-            drillTime = 10f;
+            drillTime = 160f;
             health = 100;
             tier = 2;
             squareSprite = true;

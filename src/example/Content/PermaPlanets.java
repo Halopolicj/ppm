@@ -2,6 +2,7 @@ package example.Content;
 
 import arc.graphics.Color;
 import arc.util.Time;
+import example.maps.GleoGenerator;
 import mindustry.content.Blocks;
 import mindustry.content.Planets;
 import mindustry.game.Rules;
@@ -69,7 +70,7 @@ public class PermaPlanets {
                     teamRule.rtsAi = true;
                 };
 
-                generator = new ErekirPlanetGenerator();
+                generator = new GleoGenerator();
 
 
                 startSector = 15;
