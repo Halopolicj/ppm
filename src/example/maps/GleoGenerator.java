@@ -19,7 +19,7 @@ import static mindustry.Vars.*;
 
 public class GleoGenerator extends ErekirPlanetGenerator {
 
-    Block[] terrain = {Blocks.redStone, Blocks.yellowStone, Blocks.redStone, Blocks.denseRedStone, Blocks.yellowStonePlates};
+    Block[] terrain = {Blocks.snow, Blocks.ice, Blocks.snowWall, Blocks.redIceWall, Blocks.iceWall};
 
     {
         baseSeed = 2;
