@@ -2,15 +2,13 @@ package example.Content;
 
 import arc.graphics.Color;
 import arc.util.Time;
-import example.maps.GleoGenerator;
-import mindustry.content.Blocks;
+import example.maps.GleoPlanetGenerator;
 import mindustry.content.Planets;
 import mindustry.game.Rules;
 import mindustry.game.Team;
 import mindustry.graphics.g3d.HexSkyMesh;
 import mindustry.graphics.g3d.MultiMesh;
 import mindustry.graphics.g3d.SunMesh;
-import mindustry.maps.planet.ErekirPlanetGenerator;
 import mindustry.type.Planet;
 
 public class PermaPlanets {
@@ -50,7 +48,7 @@ public class PermaPlanets {
                 prebuildBase = true;
                 allowWaves = true;
                 enemyBuildSpeedMultiplier = 1;
-                defaultCore = Blocks.coreShard;
+                defaultCore = PermaBlocks.coreStasis;
 
 
                 ruleSetter = r -> {
@@ -70,7 +68,7 @@ public class PermaPlanets {
                     teamRule.rtsAi = true;
                 };
 
-                generator = new GleoGenerator();
+                generator = new GleoPlanetGenerator();
 
 
                 startSector = 15;
