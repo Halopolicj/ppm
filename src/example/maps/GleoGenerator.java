@@ -17,7 +17,7 @@ import mindustry.world.meta.*;
 
 import static mindustry.Vars.*;
 
-public class GleoGenerator extends PlanetGenerator {
+public class GleoGenerator extends ErekirPlanetGenerator {
 
     Block[] terrain = {Blocks.snow, Blocks.ice, Blocks.snowWall, Blocks.redIceWall, Blocks.iceWall};
 
