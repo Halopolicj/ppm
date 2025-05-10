@@ -29,7 +29,7 @@ public class PermaBlocks {
             itemDrop = nickel;
             oreDefault = true;
             variants = 3;
-            oreScale = 10f;
+            oreScale = 2f;
             oreThreshold = 0.5f;
             attributes.set(Attribute.get("Nickel"), .075f);
             }};
