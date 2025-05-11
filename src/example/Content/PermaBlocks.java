@@ -3,6 +3,7 @@ package example.Content;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
+import mindustry.world.blocks.distribution.Conveyor;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.CoreBlock;
@@ -18,6 +19,9 @@ public class PermaBlocks {
 
     // walls
     wallGallium,
+
+    //distribution
+    nickelConveyor,
 
     // drills
     basicDrill,
@@ -42,6 +46,13 @@ public class PermaBlocks {
            oreScale = 1.5f;
            wallOre = true;
            //attributes.set(Attribute.get("Gallium"), .09f);
+        }};
+        //Distribution
+        nickelConveyor = new Conveyor("nickel-conveyor") {{
+           speed = 0.05f;
+           health = 50;
+           itemCapacity = 2;
+           buildCostMultiplier = 2f;
         }};
         //Drills
         basicDrill = new Drill("basic-drill") {{
