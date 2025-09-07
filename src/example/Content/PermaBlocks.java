@@ -10,7 +10,7 @@ import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.meta.Attribute;
 import mindustry.content.UnitTypes;
 
-import static example.Content.PermaItems.nickel;
+
 
 public class PermaBlocks {
     public static Block
@@ -30,7 +30,7 @@ public class PermaBlocks {
 
     public static  void load(){
         floorNickel = new OreBlock("floor-nickel-ore") {{
-            itemDrop = nickel;
+            itemDrop = PermaItems.nickel;
             oreDefault = true;
             variants = 3;
             oreScale = 2f;
@@ -61,7 +61,7 @@ public class PermaBlocks {
             tier = 2;
             squareSprite = true;
             drawSpinSprite = true;
-            requirements(Category.production, ItemStack.with(nickel, 10));
+            requirements(Category.production, ItemStack.with(PermaItems.nickel, 10));
         }};
         //Storage
         coreStasis = new CoreBlock("core-stasis") {{
