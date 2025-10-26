@@ -1,9 +1,10 @@
 package example.Content;
 
+import mindustry.content.Items;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
-import mindustry.world.blocks.distribution.Conveyor;
+import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.CoreBlock;
@@ -21,7 +22,7 @@ public class PermaBlocks {
     wallGallium,
 
     //distribution
-    nickelConveyor,
+    nickelConveyor, nickelRouter, nickelJunction, nickelBridge,
 
     // drills
     basicDrill,
@@ -53,6 +54,23 @@ public class PermaBlocks {
            health = 50;
            itemCapacity = 2;
            buildCostMultiplier = 2f;
+           requirements(Category.distribution, ItemStack.with(PermaItems.nickel, 1));
+        }};
+
+        nickelRouter = new Router("nickel-router"){{
+            //requirements(Category.distribution, with(Items.beryllium, 10));
+            health = 90;
+            researchCost = ItemStack.with(PermaItems.nickel, 30, Items.lead, 20);
+            requirements(Category.distribution, ItemStack.with(PermaItems.nickel, 10, Items.lead, 5));
+        }};
+
+        nickelJunction = new Junction("nickel-junction"){{
+           requirements(Category.distribution, ItemStack.with(PermaItems.nickel, 3));
+           health = 90;
+
+        }};
+        nickelBridge = new DirectionBridge("nickel-bridge"){{
+            requirements(Category.distribution, ItemStack.with(PermaItems.nickel, 20, Items.lead, 10));
         }};
         //Drills
         basicDrill = new Drill("basic-drill") {{
