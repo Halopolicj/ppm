@@ -55,17 +55,17 @@ public class PermaBlocks {
         }};
 
         //Defense
-        nickelWall = new Wall("nickel_wall") {{
+        nickelWall = new Wall("nickel-wall") {{
             health=200;
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 6));
         }};
-        nickelWallBig = new Wall("nickel_wall_big") {{
+        nickelWallBig = new Wall("nickel-wall-big") {{
             health=1000;
             size=2;
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 24));
         }};
 
-        nanoWall = new MendProjector("nano_wall") {{
+        nanoWall = new MendProjector("nano-wall") {{
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 100, PermaItems.gallium, 10));
            health=1000;
            hasItems = false;
@@ -74,7 +74,7 @@ public class PermaBlocks {
            range=1f;
         }};
 
-        nanoWallBig = new MendProjector("nano_wall_big") {{
+        nanoWallBig = new MendProjector("nano-wall-big") {{
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 100, PermaItems.gallium, 10));
             health=4000;
             hasItems = false;
