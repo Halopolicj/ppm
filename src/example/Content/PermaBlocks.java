@@ -72,6 +72,7 @@ public class PermaBlocks {
            healPercent = 3f;
            outputsPower=true;
            range=1f;
+           consumePower(0.3f);
         }};
 
         nanoWallBig = new MendProjector("nano-wall-big") {{
@@ -81,6 +82,7 @@ public class PermaBlocks {
             healPercent = 3f;
             outputsPower=true;
             range=1f;
+            consumePower(1.2f);
         }};
 
         //Distribution
