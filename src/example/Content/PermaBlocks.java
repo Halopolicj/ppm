@@ -4,6 +4,8 @@ import mindustry.content.Items;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
+import mindustry.world.blocks.defense.MendProjector;
+import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.*;
@@ -18,7 +20,10 @@ public class PermaBlocks {
     // floors
     floorNickel,
 
-    // walls
+    // def walls
+    nickelWall, nickelWallBig, nanoWall, nanoWallBig,
+
+    // env walls
     wallGallium,
 
     //distribution
@@ -48,6 +53,36 @@ public class PermaBlocks {
            wallOre = true;
            //attributes.set(Attribute.get("Gallium"), .09f);
         }};
+
+        //Defense
+        nickelWall = new Wall("nickel_wall") {{
+            health=200;
+            requirements(Category.defense, ItemStack.with(PermaItems.nickel, 6));
+        }};
+        nickelWall = new Wall("nickel_wall_big") {{
+            health=1000;
+            size=2;
+            requirements(Category.defense, ItemStack.with(PermaItems.nickel, 24));
+        }};
+
+        nanoWall = new MendProjector("nano_wall") {{
+            requirements(Category.defense, ItemStack.with(PermaItems.nickel, 100, PermaItems.gallium, 10));
+           health=1000;
+           hasItems = false;
+           healPercent = 3f;
+           outputsPower=true;
+           range=1f;
+        }};
+
+        nanoWallBig = new MendProjector("nano_wall_big") {{
+            requirements(Category.defense, ItemStack.with(PermaItems.nickel, 100, PermaItems.gallium, 10));
+            health=4000;
+            hasItems = false;
+            healPercent = 3f;
+            outputsPower=true;
+            range=1f;
+        }};
+
         //Distribution
         nickelConveyor = new Conveyor("nickel-conveyor") {{
            speed = 0.05f;
