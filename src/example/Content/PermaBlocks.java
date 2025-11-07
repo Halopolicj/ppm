@@ -59,7 +59,7 @@ public class PermaBlocks {
             health=200;
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 6));
         }};
-        nickelWall = new Wall("nickel_wall_big") {{
+        nickelWallBig = new Wall("nickel_wall_big") {{
             health=1000;
             size=2;
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 24));
