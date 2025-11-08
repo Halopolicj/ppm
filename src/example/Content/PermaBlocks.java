@@ -13,6 +13,7 @@ import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.meta.Attribute;
 import mindustry.content.UnitTypes;
 
+import example.expand.blocks.defense.RegenWall;
 
 
 public class PermaBlocks {
@@ -20,8 +21,11 @@ public class PermaBlocks {
     // floors
     floorNickel,
 
-    // def walls
-    nickelWall, nickelWallBig, nanoWall, nanoWallBig,
+    // def
+    nickelWall, nickelWallBig,
+
+    //regen wall
+    nanoWall, nanoWallBig,
 
     // env walls
     wallGallium,
@@ -65,13 +69,14 @@ public class PermaBlocks {
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 24));
         }};
 
-        nanoWall = new MendProjector("nano-wall") {{
+        //Regen walls
+        nanoWall = new RegenWall("nano-wall") {{
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 100, PermaItems.gallium, 10));
            health=1000;
            hasItems = false;
-           healPercent = 3f;
+           healPercent = 12f;
            outputsPower=true;
-           range=1f;
+
            consumePower(0.3f);
         }};
 
