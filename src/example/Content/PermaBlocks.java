@@ -4,7 +4,6 @@ import mindustry.content.Items;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
-import mindustry.world.blocks.defense.MendProjector;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.OreBlock;
@@ -75,20 +74,22 @@ public class PermaBlocks {
            health=1000;
            hasItems = false;
            healPercent = 12f;
-           outputsPower=true;
+           conductivePower=true;
+           connectedPower=true;
+           consumesPower=true;
+           consumePower(300);
 
-           consumePower(0.3f);
         }};
 
-        // still as a MendProjector in case RegenWall breaks
-        nanoWallBig = new MendProjector("nano-wall-big") {{
+        nanoWallBig = new RegenWall("nano-wall-big") {{
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 100, PermaItems.gallium, 10));
             health=4000;
             hasItems = false;
-            healPercent = 3f;
-            outputsPower=true;
-            range=1f;
-            consumePower(1.2f);
+            healPercent = 12f;
+            conductivePower=true;
+            connectedPower=true;
+            consumesPower=true;
+            consumePower(1200);
         }};
 
         //Distribution
