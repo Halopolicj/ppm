@@ -12,10 +12,10 @@ import mindustry.graphics.g3d.SunMesh;
 import mindustry.type.Planet;
 
 public class PermaPlanets {
-    public static Planet Ice;
+    public static Planet Gleo;
 
     public static void load() {
-        Ice = new Planet("Gleo", Planets.sun, 1, 2) {
+        Gleo = new Planet("Gleo", Planets.sun, 1, 2) {
             {
                 meshLoader = () -> new SunMesh(
                         this, 4,

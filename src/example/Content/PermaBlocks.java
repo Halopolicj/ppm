@@ -35,12 +35,11 @@ public class PermaBlocks {
     // drills
     basicDrill,
     //storage
-    coreStasis;
+    coreStasis, coreParity, coreFairness, coreJustice;
 
     public static  void load(){
         floorNickel = new OreBlock("floor-nickel-ore") {{
             itemDrop = PermaItems.nickel;
-            oreDefault = true;
             variants = 3;
             oreScale = 2f;
             oreThreshold = 0.5f;
@@ -49,12 +48,11 @@ public class PermaBlocks {
 
         //walls
         wallGallium = new OreBlock("wall-gallium-ore") {{
-            variants = 1;
+           variants = 1;
            itemDrop = PermaItems.gallium;
            oreThreshold = 0.4f;
            oreScale = 1.5f;
            wallOre = true;
-           //attributes.set(Attribute.get("Gallium"), .09f);
         }};
 
         //Defense
@@ -77,7 +75,7 @@ public class PermaBlocks {
            conductivePower=true;
            connectedPower=true;
            consumesPower=true;
-           consumePower(300);
+           consumePower(300f);
 
         }};
 
@@ -89,7 +87,7 @@ public class PermaBlocks {
             conductivePower=true;
             connectedPower=true;
             consumesPower=true;
-            consumePower(1200);
+            consumePower(1200f);
         }};
 
         //Distribution
@@ -102,9 +100,7 @@ public class PermaBlocks {
         }};
 
         nickelRouter = new Router("nickel-router"){{
-            //requirements(Category.distribution, with(Items.beryllium, 10));
             health = 90;
-            researchCost = ItemStack.with(PermaItems.nickel, 30, Items.lead, 20);
             requirements(Category.distribution, ItemStack.with(PermaItems.nickel, 10, Items.lead, 5));
         }};
 
@@ -116,15 +112,19 @@ public class PermaBlocks {
         nickelBridge = new DirectionBridge("nickel-bridge"){{
             requirements(Category.distribution, ItemStack.with(PermaItems.nickel, 20, Items.lead, 10));
         }};
+
         //Drills
         basicDrill = new Drill("basic-drill") {{
-            drillTime = 160f;
+            drillTime = 120f;
             health = 100;
-            tier = 2;
+            tier = 1;
+            size = 2;
             squareSprite = true;
             drawSpinSprite = true;
-            requirements(Category.production, ItemStack.with(PermaItems.nickel, 10));
+            drawMineItem = true;
+            requirements(Category.production, ItemStack.with(PermaItems.nickel, 16));
         }};
+
         //Storage
         coreStasis = new CoreBlock("core-stasis") {{
            isFirstTier = true;
@@ -134,7 +134,37 @@ public class PermaBlocks {
            unitCapModifier = 15;
            unitType = UnitTypes.poly;
            drawTeamOverlay = true;
+           requirements(Category.effect, ItemStack.with(PermaItems.nickel, 2000, Items.lead, 2000));
+        }};
 
+        coreFairness = new CoreBlock("core-fairness") {{
+           size = 4;
+           itemCapacity = 4000;
+           health = 3500;
+           unitCapModifier = 20;
+           drawTeamOverlay = true;
+           unitType = UnitTypes.mega;
+           requirements(Category.effect, ItemStack.with(PermaItems.nickel, 3000, Items.lead, 3000));
+        }};
+
+        coreParity = new CoreBlock("core-parity") {{
+           size = 4;
+           itemCapacity = 6000;
+           health = 4500;
+           unitCapModifier = 25;
+           drawTeamOverlay = true;
+           unitType = UnitTypes.quad;
+           requirements(Category.effect, ItemStack.with(PermaItems.nickel, 4000, Items.lead, 4000));
+        }};
+
+        coreJustice = new CoreBlock("core-justice") {{
+           size = 5;
+           itemCapacity = 10000;
+           health = 8000;
+           unitCapModifier = 30;
+           drawTeamOverlay = true;
+           unitType = UnitTypes.oct;
+           requirements(Category.effect, ItemStack.with(PermaItems.nickel, 5000, Items.lead, 5000));
         }};
     }
 }

@@ -3,7 +3,6 @@ package example;
 import arc.*;
 import arc.util.*;
 import example.Content.*;
-import mindustry.*;
 import mindustry.content.*;
 import mindustry.game.EventType.*;
 import mindustry.gen.*;
@@ -39,6 +38,7 @@ public class PermafrostMod extends Mod{
         PermaBlocks.load();
         PermaPlanets.load();
         PermaSectorPresets.load();
+        PermaTechTree.load();
     }
 
 }

@@ -14,10 +14,12 @@ public class PermaItems {
         nickel = new Item("nickel") {{
             cost = 5;
             color = Color.valueOf("cbbd8a");
+            hardness=1;
         }};
         gallium = new Item("gallium") {{
             cost = 10;
             color = Color.gray;
+            hardness = 3;
         }};
     }
 }
