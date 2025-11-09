@@ -106,7 +106,7 @@ public class PermaBlocks {
 
         //Distribution
         nickelConveyor = new Conveyor("nickel-conveyor") {{
-           speed = 0.05f;
+           speed = 2f / 60f;
            health = 50;
            itemCapacity = 2;
            buildCostMultiplier = 2f;
@@ -121,15 +121,19 @@ public class PermaBlocks {
         nickelJunction = new Junction("nickel-junction"){{
            requirements(Category.distribution, with(PermaItems.nickel, 3));
            health = 90;
+           speed = 3;
+           capacity = 4;
 
         }};
         nickelBridge = new DirectionBridge("nickel-bridge"){{
             requirements(Category.distribution, with(PermaItems.nickel, 20, Items.lead, 10));
+            itemCapacity = 5;
         }};
+
 
         //Drills
         basicDrill = new Drill("basic-drill") {{
-            drillTime = 120f;
+            drillTime = 400f;
             health = 100;
             tier = 1;
             size = 2;
@@ -174,6 +178,7 @@ public class PermaBlocks {
 
         coreJustice = new CoreBlock("core-justice") {{
            size = 5;
+           description = "Justice shall be served. Final core upgrade";
            itemCapacity = 10000;
            health = 8000;
            unitCapModifier = 30;
@@ -183,7 +188,7 @@ public class PermaBlocks {
         }};
 
         //Turrets
-        turret = new ItemTurret("duo"){{
+        turret = new ItemTurret("turret"){{
             requirements(Category.turret, with(Items.copper, 35));
             ammo(
                     Items.copper,  new BasicBulletType(2.5f, 9){{
