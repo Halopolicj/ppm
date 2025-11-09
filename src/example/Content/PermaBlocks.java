@@ -80,6 +80,7 @@ public class PermaBlocks {
            consumePower(0.3f);
         }};
 
+        // still as a MendProjector in case RegenWall breaks
         nanoWallBig = new MendProjector("nano-wall-big") {{
             requirements(Category.defense, ItemStack.with(PermaItems.nickel, 100, PermaItems.gallium, 10));
             health=4000;
