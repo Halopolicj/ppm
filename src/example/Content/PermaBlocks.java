@@ -104,7 +104,6 @@ public class PermaBlocks {
         nickelRouter = new Router("nickel-router"){{
             //requirements(Category.distribution, with(Items.beryllium, 10));
             health = 90;
-            researchCost = ItemStack.with(PermaItems.nickel, 30, Items.lead, 20);
             requirements(Category.distribution, ItemStack.with(PermaItems.nickel, 10, Items.lead, 5));
         }};
 
