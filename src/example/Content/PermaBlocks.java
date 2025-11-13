@@ -20,10 +20,10 @@ import mindustry.world.meta.*;
 import mindustry.content.UnitTypes;
 
 
-
 import example.expand.blocks.defense.RegenWall;
 
 import static mindustry.type.ItemStack.with;
+import static mindustry.world.meta.Stat.buildTime;
 
 
 public class PermaBlocks {
@@ -125,7 +125,7 @@ public class PermaBlocks {
            capacity = 4;
 
         }};
-        nickelBridge = new DirectionBridge("nickel-bridge"){{
+        nickelBridge = new DuctBridge("nickel-bridge"){{
             requirements(Category.distribution, with(PermaItems.nickel, 20, Items.lead, 10));
             itemCapacity = 5;
         }};
@@ -189,19 +189,21 @@ public class PermaBlocks {
 
         //Turrets
         turret = new ItemTurret("turret"){{
-            requirements(Category.turret, with(Items.copper, 35));
+            requirements(Category.turret, with(PermaItems.nickel, 150, Items.lead, 100));
             ammo(
-                    Items.copper,  new BasicBulletType(2.5f, 9){{
+                    PermaItems.nickel,  new BasicBulletType(6f, 15){{
                         width = 7f;
                         height = 9f;
                         lifetime = 60f;
-                        ammoMultiplier = 2;
+                        ammoMultiplier = 1;
+                        pierce = false;
+
 
                         hitEffect = despawnEffect = Fx.hitBulletColor;
                         hitColor = backColor = trailColor = Pal.missileYellowBack;
                         frontColor = Pal.lightOrange;
-                    }},
-                    Items.graphite, new BasicBulletType(3.5f, 18){{
+                    }}
+                    /*Items.graphite, new BasicBulletType(3.5f, 18){{
                         width = 9f;
                         height = 12f;
                         ammoMultiplier = 4;
@@ -211,8 +213,8 @@ public class PermaBlocks {
                         hitEffect = despawnEffect = Fx.hitBulletColor;
                         hitColor = backColor = trailColor = Pal.accentBack;
                         frontColor = Pal.plastaniumFront;
-                    }},
-                    Items.silicon, new BasicBulletType(3f, 12){{
+                    }},*/
+                    /*Items.silicon, new BasicBulletType(3f, 12){{
                         width = 7f;
                         height = 9f;
                         homingPower = 0.2f;
@@ -226,10 +228,9 @@ public class PermaBlocks {
                         hitEffect = despawnEffect = Fx.hitBulletColor;
                         hitColor = backColor = trailColor = Pal.bulletYellowBack;
                         frontColor = Pal.lightishGray;
-                    }}
+                    }}*/
             );
 
-            shoot = new ShootAlternate(3.5f);
 
             recoils = 2;
             drawer = new DrawTurret(){{
@@ -237,7 +238,7 @@ public class PermaBlocks {
                     int f = i;
                     parts.add(new RegionPart("-barrel-" + (i == 0 ? "l" : "r")){{
                         progress = PartProgress.recoil;
-                        recoilIndex = f;
+                        outline = true;
                         under = true;
                         moveY = -1.5f;
                     }});
@@ -251,10 +252,10 @@ public class PermaBlocks {
             shootCone = 15f;
             ammoUseEffect = Fx.casing1;
             health = 250;
-            inaccuracy = 2f;
             rotateSpeed = 10f;
             coolant = consumeCoolant(0.1f);
             researchCostMultiplier = 0.05f;
+
 
             limitRange(5f);
         }};
