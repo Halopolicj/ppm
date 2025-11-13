@@ -1,5 +1,6 @@
 package example.Content;
 
+import arc.graphics.Color;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.entities.bullet.*;
@@ -191,16 +192,16 @@ public class PermaBlocks {
         turret = new ItemTurret("turret"){{
             requirements(Category.turret, with(PermaItems.nickel, 150, Items.lead, 100));
             ammo(
-                    PermaItems.nickel,  new BasicBulletType(6f, 15){{
-                        width = 7f;
-                        height = 9f;
+                    PermaItems.nickel,  new BasicBulletType(13f, 15){{
+                        width = 5f;
+                        height = 7f;
                         lifetime = 60f;
                         ammoMultiplier = 1;
                         pierce = false;
 
 
                         hitEffect = despawnEffect = Fx.hitBulletColor;
-                        hitColor = backColor = trailColor = Pal.missileYellowBack;
+                        hitColor = backColor = trailColor = PermaItems.nickel.color;
                         frontColor = Pal.lightOrange;
                     }}
                     /*Items.graphite, new BasicBulletType(3.5f, 18){{
@@ -233,10 +234,10 @@ public class PermaBlocks {
 
 
             recoils = 2;
-            drawer = new DrawTurret(){{
+            drawer = new DrawTurret("normal"){{
                 for(int i = 0; i < 2; i ++){
                     int f = i;
-                    parts.add(new RegionPart("-barrel-" + (i == 0 ? "l" : "r")){{
+                    parts.add(new RegionPart("-barrel" + (i == 0 ? "l" : "r")){{
                         progress = PartProgress.recoil;
                         outline = true;
                         under = true;
@@ -255,6 +256,7 @@ public class PermaBlocks {
             rotateSpeed = 10f;
             coolant = consumeCoolant(0.1f);
             researchCostMultiplier = 0.05f;
+            size = 2;
 
 
             limitRange(5f);
