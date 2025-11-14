@@ -50,7 +50,7 @@ public class PermaBlocks {
     coreStasis, coreParity, coreFairness, coreJustice,
 
     //Turrets
-    turret;
+    turret, aaTurret;
 
     public static  void load(){
         floorNickel = new OreBlock("floor-nickel-ore") {{
@@ -252,7 +252,7 @@ public class PermaBlocks {
             range = 160;
             shootCone = 15f;
             ammoUseEffect = Fx.casing1;
-            health = 250;
+            health = 670;
             rotateSpeed = 10f;
             coolant = consumeCoolant(0.1f);
             researchCostMultiplier = 0.05f;
@@ -261,5 +261,30 @@ public class PermaBlocks {
 
             limitRange(5f);
         }};
+
+        aaturret = new ItemTurret("aaturret"){{
+            requirements(Category.turret, with(PermaItems.nickel, 150, Items.lead, 100));
+            ammo(                
+             Items.lead,  new BasicBulletType(13f, 5){{
+                        width = 5f;
+                        height = 7f;
+                        lifetime = 60f;
+                        ammoMultiplier = 0.5;
+                        pierce = true;
+                         
+
+
+                        hitEffect = despawnEffect = Fx.hitBulletColor;
+                        hitColor = backColor = trailColor = Items.lead.color;
+                        frontColor = Items.lead.color;
+                    }}
+                );
+
+                range=100;
+                shootCone=25f;
+                ammoUseEffect = Fx.casing2;
+                health = 500;
+                
     }
+    
 }
