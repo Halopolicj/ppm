@@ -202,7 +202,7 @@ public class PermaBlocks {
 
                         hitEffect = despawnEffect = Fx.hitBulletColor;
                         hitColor = backColor = trailColor = PermaItems.nickel.color;
-                        frontColor = Pal.lightOrange;
+                        frontColor = PermaItems.nickel.color;
                     }}
                     /*Items.graphite, new BasicBulletType(3.5f, 18){{
                         width = 9f;
