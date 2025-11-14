@@ -234,7 +234,7 @@ public class PermaBlocks {
 
 
             recoils = 2;
-            drawer = new DrawTurret("normal"){{
+            /*drawer = new DrawTurret("normal"){{
                 for(int i = 0; i < 2; i ++){
                     int f = i;
                     parts.add(new RegionPart("-barrel" + (i == 0 ? "l" : "r")){{
@@ -244,7 +244,7 @@ public class PermaBlocks {
                         moveY = -1.5f;
                     }});
                 }
-            }};
+            }};*/
 
             recoil = 0.5f;
             shootY = 3f;
