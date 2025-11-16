@@ -33,12 +33,13 @@ public class PermafrostMod extends Mod{
         //MindyPlanets.load();
         //MindySectors.load();
         //MindyTechTree.load();
-        PermaAttributes.load();
+        PermaAttributes.load();//When the fuck did i make this file, also i like the word fuck
         PermaItems.load();
         PermaBlocks.load();
         PermaPlanets.load();
         PermaSectorPresets.load();
         PermaTechTree.load();
+        PermaTeams.load();
     }
 
 }
