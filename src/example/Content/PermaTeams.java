@@ -46,7 +46,9 @@ public class PermaTeams {
 
         //attempt to load the team icon <- Taken from FOS mod,
         //i got no fucking idea what this does, might get rid of this
-        Seq<Font> fonts = Seq.with(Fonts.def, Fonts.outline);
+
+        //This whole thing made the game crash
+        /*Seq<Font> fonts = Seq.with(Fonts.def, Fonts.outline);
 
         var ch = 65000 + id;
         Reflect.<ObjectIntMap<String>>get(Fonts.class, "unicodeIcons").put(name, ch);
@@ -78,7 +80,7 @@ public class PermaTeams {
         //now put whatever the heck we get for an emoji <- also from FOS mod,
         //and again i got no fucking idea what it does
         team.emoji = stringIcons.get(team.name, "");
-
+        */
         return team;
     }
 }
