@@ -10,8 +10,9 @@ public class PermaSectorPresets {
         Beginning = new SectorPreset("Beginning", PermaPlanets.Gleo, 15){{
             captureWave = 10;
             difficulty = 1;
-
+            overrideLaunchDefaults = true;
             alwaysUnlocked = true;
+            addStartingItems = true;
 
             rules = r -> {
                 r.winWave = captureWave;

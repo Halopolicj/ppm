@@ -35,12 +35,12 @@ public class PermaPlanets {
                 landCloudColor = Color.valueOf("3587F2");
                 atmosphereColor = Color.valueOf("00FF9F");
                 alwaysUnlocked = true;
-                startSector = 23;
+                //startSector = 23;
                 atmosphereRadIn = 0.02f;
                 atmosphereRadOut = 0.3f;
                 accessible = true;
                 allowLaunchToNumbered = false;
-                allowLaunchSchematics = false;
+                allowLaunchSchematics = true;
                 allowLaunchLoadout = false;
                 allowWaveSimulation = false;
                 allowSectorInvasion = false;
@@ -64,6 +64,7 @@ public class PermaPlanets {
                     r.onlyDepositCore = false;
                     r.fog = false;
 
+                    r.defaultTeam = PermaTeams.Stalgares;
                     Rules.TeamRule teamRule = r.teams.get(r.defaultTeam);
                     teamRule.rtsAi = true;
                 };
