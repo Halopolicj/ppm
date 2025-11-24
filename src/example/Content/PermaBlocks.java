@@ -3,12 +3,14 @@ package example.Content;
 import arc.graphics.Color;
 import mindustry.content.Fx;
 import mindustry.content.Items;
+import mindustry.content.Liquids;
 import mindustry.entities.bullet.*;
 import mindustry.entities.part.RegionPart;
 import mindustry.entities.pattern.ShootAlternate;
 import mindustry.type.Category;
 
 import mindustry.graphics.*;
+import mindustry.type.Liquid;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
@@ -16,7 +18,7 @@ import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.CoreBlock;
-import mindustry.world.draw.DrawTurret;
+import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.content.UnitTypes;
 
@@ -25,12 +27,13 @@ import example.expand.blocks.defense.RegenWall;
 
 import static mindustry.type.ItemStack.with;
 import static mindustry.world.meta.Stat.buildTime;
+import static mindustry.world.meta.Stat.input;
 
 
 public class PermaBlocks {
     public static Block
-    // floors
-    floorNickel,
+            // floors
+            floorNickel,
 
     // def
     nickelWall, nickelWallBig,
@@ -44,166 +47,203 @@ public class PermaBlocks {
     //distribution
     nickelConveyor, nickelRouter, nickelJunction, nickelBridge,
 
+    // production
+    greenfactory, bismuthCristilizer,
+
     // drills
     basicDrill,
     //storage
     coreStasis, coreParity, coreFairness, coreJustice,
 
     //Turrets
-    turret, aaTurret;
+    Hedgehog, aaTurret;
 
-    public static  void load(){
+    public static void load() {
         floorNickel = new OreBlock("floor-nickel-ore") {{
             itemDrop = PermaItems.nickel;
             variants = 3;
             oreScale = 2f;
             oreThreshold = 0.5f;
             attributes.set(Attribute.get("Nickel"), .075f);
-            }};
+        }};
 
         //walls
         wallGallium = new OreBlock("wall-gallium-ore") {{
-           variants = 1;
-           itemDrop = PermaItems.gallium;
-           oreThreshold = 0.4f;
-           oreScale = 1.5f;
-           wallOre = true;
+            variants = 1;
+            itemDrop = PermaItems.gallium;
+            oreThreshold = 0.4f;
+            oreScale = 1.5f;
+            wallOre = true;
         }};
 
         //Defense
         nickelWall = new Wall("nickel-wall") {{
-            health=200;
+            health = 200;
             requirements(Category.defense, with(PermaItems.nickel, 6));
         }};
         nickelWallBig = new Wall("nickel-wall-big") {{
-            health=1000;
-            size=2;
+            health = 1000;
+            size = 2;
             requirements(Category.defense, with(PermaItems.nickel, 24));
         }};
 
         //Regen walls
         nanoWall = new RegenWall("nano-wall") {{
             requirements(Category.defense, with(PermaItems.nickel, 100, PermaItems.gallium, 10));
-           health=1000;
-           hasItems = false;
-           healPercent = 12f;
-           conductivePower=true;
-           connectedPower=true;
-           consumesPower=true;
-           consumePower(300f);
+            health = 1000;
+            hasItems = false;
+            healPercent = 12f;
+            conductivePower = true;
+            connectedPower = true;
+            consumesPower = true;
+            consumePower(300f);
 
         }};
 
         nanoWallBig = new RegenWall("nano-wall-big") {{
             requirements(Category.defense, with(PermaItems.nickel, 100, PermaItems.gallium, 10));
-            health=4000;
+            health = 4000;
             hasItems = false;
             healPercent = 12f;
-            conductivePower=true;
-            connectedPower=true;
-            consumesPower=true;
+            conductivePower = true;
+            connectedPower = true;
+            consumesPower = true;
             consumePower(1200f);
         }};
 
         //Distribution
         nickelConveyor = new Conveyor("nickel-conveyor") {{
-           speed = 2f / 60f;
-           health = 50;
-           itemCapacity = 2;
-           buildCostMultiplier = 2f;
-           requirements(Category.distribution, with(PermaItems.nickel, 1));
+            speed = 2f / 60f;
+            health = 50;
+            itemCapacity = 2;
+            buildCostMultiplier = 2f;
+            requirements(Category.distribution, with(PermaItems.nickel, 1));
         }};
 
-        nickelRouter = new Router("nickel-router"){{
+        nickelRouter = new Router("nickel-router") {{
             health = 90;
             requirements(Category.distribution, with(PermaItems.nickel, 10, Items.lead, 5));
         }};
 
-        nickelJunction = new Junction("nickel-junction"){{
-           requirements(Category.distribution, with(PermaItems.nickel, 3));
-           health = 90;
-           speed = 3;
-           capacity = 4;
+        nickelJunction = new Junction("nickel-junction") {{
+            requirements(Category.distribution, with(PermaItems.nickel, 3));
+            health = 90;
+            speed = 3;
+            capacity = 4;
 
         }};
-        nickelBridge = new DuctBridge("nickel-bridge"){{
+        nickelBridge = new DuctBridge("nickel-bridge") {{
             requirements(Category.distribution, with(PermaItems.nickel, 20, Items.lead, 10));
             itemCapacity = 5;
         }};
 
+        //Production
+        greenfactory = new GenericCrafter("greenfactory") {{
 
-        //Drills
-        basicDrill = new Drill("basic-drill") {{
-            drillTime = 400f;
-            health = 100;
-            tier = 1;
-            size = 2;
-            squareSprite = true;
-            drawSpinSprite = true;
-            drawMineItem = true;
-            requirements(Category.production, with(PermaItems.nickel, 16));
         }};
 
-        //Storage
-        coreStasis = new CoreBlock("core-stasis") {{
-           isFirstTier = true;
-           alwaysUnlocked = true;
-           size = 3;
-           itemCapacity = 2000;
-           health = 2000;
-           unitCapModifier = 15;
-           unitType = UnitTypes.poly;
-           drawTeamOverlay = true;
-           requirements(Category.effect, with(PermaItems.nickel, 2000, Items.lead, 2000));
-        }};
+        bismuthCristilizer = new GenericCrafter("bismuth-crystalizer") {{
+                requirements(Category.production, with(PermaItems.nickel, 50, Items.lead, 35));
+                itemCapacity = 10;
+                outputItems = with(PermaItems.bismuth, 2);
+                consumeItem(Items.lead, 2);
+                consumeLiquid(Liquids.water, 8);
+                craftTime = 90f;
+                ignoreLiquidFullness = true;
 
-        coreFairness = new CoreBlock("core-fairness") {{
-           size = 4;
-           itemCapacity = 4000;
-           health = 3500;
-           unitCapModifier = 20;
-           drawTeamOverlay = true;
-           unitType = UnitTypes.mega;
-           requirements(Category.effect, with(PermaItems.nickel, 3000, Items.lead, 3000));
-        }};
+                drawer = new DrawMulti(
+                        new DrawRegion("-bottom"),
+                        new DrawLiquidTile(Liquids.water, 2f),
+                        new DrawBubbles(Color.valueOf("7693e3")) {{
+                            sides = 10;
+                            recurrence = 3f;
+                            spread = 6;
+                            radius = 1.5f;
+                            amount = 20;
+                        }},
+                        new DrawRegion(),
+                        new DrawLiquidOutputs(),
+                        new DrawGlowRegion() {{
+                            alpha = 0.7f;
+                            color = Color.valueOf("#ff73ab");
+                            glowIntensity = 0.3f;
+                            glowScale = 6f;
+                        }}
 
-        coreParity = new CoreBlock("core-parity") {{
-           size = 4;
-           itemCapacity = 6000;
-           health = 4500;
-           unitCapModifier = 25;
-           drawTeamOverlay = true;
-           unitType = UnitTypes.quad;
-           requirements(Category.effect, with(PermaItems.nickel, 4000, Items.lead, 4000));
-        }};
+                );
+            }};
+                //Drills
+                basicDrill = new Drill("basic-drill") {{
+                    drillTime = 400f;
+                    health = 100;
+                    tier = 1;
+                    size = 2;
+                    squareSprite = true;
+                    drawSpinSprite = true;
+                    drawMineItem = true;
+                    requirements(Category.production, with(PermaItems.nickel, 16));
+                }};
 
-        coreJustice = new CoreBlock("core-justice") {{
-           size = 5;
-           description = "Justice shall be served. Final core upgrade";
-           itemCapacity = 10000;
-           health = 8000;
-           unitCapModifier = 30;
-           drawTeamOverlay = true;
-           unitType = UnitTypes.oct;
-           requirements(Category.effect, with(PermaItems.nickel, 5000, Items.lead, 5000));
-        }};
+                //Storage
+                coreStasis = new CoreBlock("core-stasis") {{
+                    isFirstTier = true;
+                    alwaysUnlocked = true;
+                    size = 3;
+                    itemCapacity = 2000;
+                    health = 2000;
+                    unitCapModifier = 15;
+                    unitType = UnitTypes.poly;
+                    drawTeamOverlay = true;
+                    requirements(Category.effect, with(PermaItems.nickel, 2000, Items.lead, 2000));
+                }};
 
-        //Turrets
-        turret = new ItemTurret("turret"){{
-            requirements(Category.turret, with(PermaItems.nickel, 150, Items.lead, 100));
-            ammo(
-                    PermaItems.nickel,  new BasicBulletType(13f, 15){{
-                        width = 5f;
-                        height = 7f;
-                        lifetime = 60f;
-                        ammoMultiplier = 1;
-                        pierce = false;
+                coreFairness = new CoreBlock("core-fairness") {{
+                    size = 4;
+                    itemCapacity = 4000;
+                    health = 3500;
+                    unitCapModifier = 20;
+                    drawTeamOverlay = true;
+                    unitType = UnitTypes.mega;
+                    requirements(Category.effect, with(PermaItems.nickel, 3000, Items.lead, 3000));
+                }};
+
+                coreParity = new CoreBlock("core-parity") {{
+                    size = 4;
+                    itemCapacity = 6000;
+                    health = 4500;
+                    unitCapModifier = 25;
+                    drawTeamOverlay = true;
+                    unitType = UnitTypes.quad;
+                    requirements(Category.effect, with(PermaItems.nickel, 4000, Items.lead, 4000));
+                }};
+
+                coreJustice = new CoreBlock("core-justice") {{
+                    size = 5;
+                    description = "Justice shall be served. Final core upgrade";
+                    itemCapacity = 10000;
+                    health = 8000;
+                    unitCapModifier = 30;
+                    drawTeamOverlay = true;
+                    unitType = UnitTypes.oct;
+                    requirements(Category.effect, with(PermaItems.nickel, 5000, Items.lead, 5000));
+                }};
+
+                //Turrets
+                Hedgehog = new ItemTurret("Hedgehog") {{
+                    requirements(Category.turret, with(PermaItems.nickel, 150, Items.lead, 100));
+                    ammo(
+                            PermaItems.nickel, new BasicBulletType(13f, 15) {{
+                                width = 5f;
+                                height = 7f;
+                                lifetime = 60f;
+                                ammoMultiplier = 1;
+                                pierce = false;
 
 
-                        hitEffect = despawnEffect = Fx.hitBulletColor;
-                        hitColor = backColor = trailColor = PermaItems.nickel.color;
-                        frontColor = PermaItems.nickel.color;
-                    }}
+                                hitEffect = despawnEffect = Fx.hitBulletColor;
+                                hitColor = backColor = trailColor = PermaItems.nickel.color;
+                                frontColor = PermaItems.nickel.color;
+                            }}
                     /*Items.graphite, new BasicBulletType(3.5f, 18){{
                         width = 9f;
                         height = 12f;
@@ -230,10 +270,10 @@ public class PermaBlocks {
                         hitColor = backColor = trailColor = Pal.bulletYellowBack;
                         frontColor = Pal.lightishGray;
                     }}*/
-            );
+                    );
 
 
-            recoils = 2;
+                    recoils = 2;
             /*drawer = new DrawTurret("normal"){{
                 for(int i = 0; i < 2; i ++){
                     int f = i;
@@ -246,26 +286,26 @@ public class PermaBlocks {
                 }
             }};*/
 
-            recoil = 0.5f;
-            shootY = 3f;
-            reload = 20f;
-            range = 160;
-            shootCone = 15f;
-            ammoUseEffect = Fx.casing1;
-            health = 670;
-            rotateSpeed = 10f;
-            coolant = consumeCoolant(0.1f);
-            researchCostMultiplier = 0.05f;
-            size = 2;
+                    recoil = 0.5f;
+                    shootY = 3f;
+                    reload = 20f;
+                    range = 160;
+                    shootCone = 15f;
+                    ammoUseEffect = Fx.casing1;
+                    health = 670;
+                    rotateSpeed = 10f;
+                    coolant = consumeCoolant(0.1f);
+                    researchCostMultiplier = 0.05f;
+                    size = 2;
 
 
-            limitRange(5f);
-        }};
+                    limitRange(5f);
+                }};
 
-        aaTurret = new ItemTurret("aaTurret"){{
+                aaTurret = new ItemTurret("aaTurret") {{
 
-        }};
-                
-    }
-    
-}
+                }};
+
+            }
+
+        }
