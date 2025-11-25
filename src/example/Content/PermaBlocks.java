@@ -150,6 +150,9 @@ public class PermaBlocks {
                 consumeLiquid(Liquids.water, 8);
                 craftTime = 90f;
                 ignoreLiquidFullness = true;
+                hasPower = false;
+                consumesPower = false;
+                size = 2;
 
                 drawer = new DrawMulti(
                         new DrawRegion("-bottom"),
