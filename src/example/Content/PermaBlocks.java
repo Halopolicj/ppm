@@ -11,6 +11,7 @@ import mindustry.type.Category;
 
 import mindustry.graphics.*;
 import mindustry.type.Liquid;
+import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
@@ -139,15 +140,17 @@ public class PermaBlocks {
 
         //Production
         greenfactory = new GenericCrafter("greenfactory") {{
+            requirements(Category.crafting, with(PermaItems.gallium, 3));
+            outputLiquids = LiquidStack.with(Liquids.gallium, 20f/60f);
 
         }};
 
         bismuthCristilizer = new GenericCrafter("bismuth-crystalizer") {{
-                requirements(Category.production, with(PermaItems.nickel, 50, Items.lead, 35));
+                requirements(Category.crafting, with(PermaItems.nickel, 50, Items.lead, 35));
                 itemCapacity = 10;
                 outputItems = with(PermaItems.bismuth, 2);
                 consumeItem(Items.lead, 2);
-                consumeLiquid(Liquids.water, 8);
+                consumeLiquid(Liquids.water, 30f /60f);
                 craftTime = 90f;
                 ignoreLiquidFullness = true;
                 hasPower = false;
