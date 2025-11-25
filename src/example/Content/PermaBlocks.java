@@ -17,6 +17,7 @@ import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.OreBlock;
+import mindustry.world.blocks.liquid.LiquidBlock;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.draw.*;
@@ -35,6 +36,9 @@ public class PermaBlocks {
     public static Block
             // floors
             floorNickel,
+
+    //liquids
+    liquidBismuth,
 
     // def
     nickelWall, nickelWallBig,
@@ -66,6 +70,10 @@ public class PermaBlocks {
             oreScale = 2f;
             oreThreshold = 0.5f;
             attributes.set(Attribute.get("Nickel"), .075f);
+        }};
+        //liquids
+        liquidBismuth = new LiquidBlock("liquidBismuth") {{
+
         }};
 
         //walls
