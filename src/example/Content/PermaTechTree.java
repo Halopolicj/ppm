@@ -42,6 +42,13 @@ public class PermaTechTree {
             node(nickelWall, () ->{
                 node(nickelWallBig, () -> {
                 });
+
+                //Turrets
+                node(Hedgehog, () ->{
+                   node(aaTurret, () -> {
+
+                   });
+                });
                 //TODO add more walls & make nano walls branch off of the strongest normal wall
             });
 
@@ -50,23 +57,41 @@ public class PermaTechTree {
                //TODO add pre gallium wall drill & better drills, possibly post gallium
             });
 
-            //storage
-            node(coreStasis, () -> {
-                node(coreFairness, () -> {
-                   node(coreParity, () -> {
-                       node(coreJustice, () -> {
+            //Crafting
+            node(bismuthCristilizer, () -> {
 
-                       });
-                   });
+            });
+
+
+            //storage
+
+            node(coreFairness, () -> {
+                node(coreParity, () -> {
+                    node(coreJustice, () -> {
+
+                    });
                 });
             });
+
 
 
 
             //items
             nodeProduce(nickel, () -> {
                 nodeProduce(Items.lead, () -> {
+                    nodeProduce(bismuth, () -> {
+                       nodeProduce(gallium, () -> {
+
+                       }) ;
+                    });
                     //TODO add something between lead and gallium, maybe bismuth?
+                });
+
+                //Liquids
+                nodeProduce(Liquids.water, () -> {
+                   nodeProduce(Liquids.gallium, () -> {
+
+                   });
                 });
             });
         });
