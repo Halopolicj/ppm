@@ -150,7 +150,7 @@ public class PermaBlocks {
                 itemCapacity = 10;
                 outputItems = with(PermaItems.bismuth, 2);
                 consumeItem(Items.lead, 2);
-                consumeLiquid(Liquids.water, 30f /60f);
+                consumeLiquid(Liquids.water, 8f /60f);
                 craftTime = 90f;
                 ignoreLiquidFullness = true;
                 hasPower = false;
