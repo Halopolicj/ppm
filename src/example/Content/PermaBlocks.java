@@ -150,6 +150,9 @@ public class PermaBlocks {
         greenfactory = new GenericCrafter("greenfactory") {{
             requirements(Category.crafting, with(PermaItems.gallium, 3));
             outputLiquids = LiquidStack.with(Liquids.gallium, 20f/60f);
+            size = 2;
+            consumeItem(PermaItems.gallium, 2);
+            craftTime = 60f;
 
         }};
 
@@ -182,7 +185,9 @@ public class PermaBlocks {
                             color = Color.valueOf("#ff73ab");
                             glowIntensity = 0.3f;
                             glowScale = 6f;
-                        }}
+                        }},
+                        new DrawRegion("-bis"),
+                        new DrawLiquidTile(PermaLiquids.liquidBismuth, 2f)
 
                 );
             }};
