@@ -16,6 +16,7 @@ import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.distribution.*;
+import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.liquid.LiquidBlock;
 import mindustry.world.blocks.production.*;
@@ -23,7 +24,6 @@ import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.content.UnitTypes;
-
 
 import example.expand.blocks.defense.RegenWall;
 
@@ -72,8 +72,11 @@ public class PermaBlocks {
             attributes.set(Attribute.get("Nickel"), .075f);
         }};
         //liquids
-        liquidBismuth = new LiquidBlock("liquidBismuth") {{
-
+        liquidBismuth = new Floor("liquidBismuth") {{
+            isLiquid = true;
+            albedo = 0.8f;
+            //TODO add status effect
+            liquidDrop = PermaLiquids.moltenBismuth;
         }};
 
         //walls
@@ -117,6 +120,7 @@ public class PermaBlocks {
             conductivePower = true;
             connectedPower = true;
             consumesPower = true;
+            size = 2;
             consumePower(1200f);
         }};
 
@@ -127,6 +131,8 @@ public class PermaBlocks {
             itemCapacity = 2;
             buildCostMultiplier = 2f;
             requirements(Category.distribution, with(PermaItems.nickel, 1));
+            junctionReplacement = nickelJunction;
+            bridgeReplacement = nickelBridge;
         }};
 
         nickelRouter = new Router("nickel-router") {{
@@ -187,7 +193,7 @@ public class PermaBlocks {
                             glowScale = 6f;
                         }},
                         new DrawRegion("-bis"),
-                        new DrawLiquidTile(PermaLiquids.liquidBismuth, 2f)
+                        new DrawLiquidTile(PermaLiquids.moltenBismuth, 2f)
 
                 );
             }};

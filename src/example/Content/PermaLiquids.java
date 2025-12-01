@@ -6,11 +6,11 @@ import mindustry.type.Liquid;
 public class PermaLiquids {
 
     public static Liquid
-        liquidBismuth;
+        moltenBismuth;
 
     public static void load()
     {
-        liquidBismuth = new Liquid("liquidBismuth") {{
+          moltenBismuth = new Liquid("moltenBismuth") {{
            coolant = false;
            viscosity = 0.6f;
            heatCapacity = 0.2f;
