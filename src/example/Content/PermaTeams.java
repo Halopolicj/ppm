@@ -25,9 +25,9 @@ public class PermaTeams {
     public static void load(){
 
         //TODO add team colors (green, blue, orange/red)
-        Stalgares = newTeam(97, "Stalgares", Color.valueOf("ffffff"));
-        Glarstes = newTeam(87, "Glarstes", Color.valueOf("aaaaaa"));
-        Fluvcorea = newTeam(83, "Fluvcorea", Color.valueOf("bbbbbb"));
+        Stalgares = newTeam(97, "Stalgares", Color.valueOf("67ff00"));
+        Glarstes = newTeam(87, "Glarstes", Color.valueOf("659edf"));
+        Fluvcorea = newTeam(83, "Fluvcorea", Color.valueOf("df8365"));
     }
 
     //modify any of 256 teams' properties <-taken from FOS mod (EXCUSE ME HOW MUCH?!)
