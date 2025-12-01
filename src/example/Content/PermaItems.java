@@ -8,7 +8,7 @@ public class PermaItems {
     //Load Mod Items
 
     public static Item
-            nickel, gallium, zirconiu, bismuth;
+            nickel, gallium, zirconium, bismuth;
 
     public static void load() {
         nickel = new Item("nickel") {{
@@ -28,7 +28,7 @@ public class PermaItems {
             //how the hell do i make the color rainbow
             color = Color.coral;//I got no idea how the coral color looks
         }};
-        zirconiu = new Item("zirconium") {{
+        zirconium = new Item("zirconium") {{
            cost =  1.4f;
             charge = 0.7f;
             //TODO add cool color probably blue-ish

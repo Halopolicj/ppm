@@ -41,7 +41,10 @@ public class PermaBlocks {
     liquidBismuth,
 
     // def
-    nickelWall, nickelWallBig,
+    nickelWall, nickelWallBig, zircWall, zircWallBig,
+
+    //Turrets
+    Hedgehog, aaTurret,
 
     //regen wall
     nanoWall, nanoWallBig,
@@ -50,7 +53,8 @@ public class PermaBlocks {
     wallGallium,
 
     //distribution
-    nickelConveyor, nickelRouter, nickelJunction, nickelBridge,
+    nickelConveyor, nickelRouter, nickelJunction, nickelBridge, nickelSorter, nickelSorterInv,
+    nickelOverflow, nickelUnderflow,
 
     // production
     greenfactory, bismuthCristilizer,
@@ -58,10 +62,9 @@ public class PermaBlocks {
     // drills
     basicDrill,
     //storage
-    coreStasis, coreParity, coreFairness, coreJustice,
+    coreStasis, coreParity, coreFairness, coreJustice;
 
-    //Turrets
-    Hedgehog, aaTurret;
+
 
     public static void load() {
         floorNickel = new OreBlock("floor-nickel-ore") {{
@@ -72,9 +75,10 @@ public class PermaBlocks {
             attributes.set(Attribute.get("Nickel"), .075f);
         }};
         //liquids
-        liquidBismuth = new Floor("liquidBismuth") {{
+        liquidBismuth = new Floor("liquid-bismuth") {{
             isLiquid = true;
             albedo = 0.8f;
+            drownTime = 240f;
             //TODO add status effect
             liquidDrop = PermaLiquids.moltenBismuth;
         }};
@@ -99,6 +103,15 @@ public class PermaBlocks {
             requirements(Category.defense, with(PermaItems.nickel, 24));
         }};
 
+        zircWall = new Wall("zirc-wall") {{
+           health = 500;
+           requirements(Category.defense, with(PermaItems.zirconium, 6));
+        }};
+
+        zircWallBig = new Wall("zirc-wall-big") {{
+            health = 2500;
+            requirements(Category.defense, with(PermaItems.zirconium, 24));
+        }};
         //Regen walls
         nanoWall = new RegenWall("nano-wall") {{
             requirements(Category.defense, with(PermaItems.nickel, 100, PermaItems.gallium, 10));
@@ -126,7 +139,7 @@ public class PermaBlocks {
 
         //Distribution
         nickelConveyor = new Conveyor("nickel-conveyor") {{
-            speed = 2f / 60f;
+            speed = 4f / 60f;
             health = 50;
             itemCapacity = 2;
             buildCostMultiplier = 2f;
@@ -137,7 +150,7 @@ public class PermaBlocks {
 
         nickelRouter = new Router("nickel-router") {{
             health = 90;
-            requirements(Category.distribution, with(PermaItems.nickel, 10, Items.lead, 5));
+            requirements(Category.distribution, with(PermaItems.nickel, 5, Items.lead, 3));
         }};
 
         nickelJunction = new Junction("nickel-junction") {{
@@ -148,10 +161,36 @@ public class PermaBlocks {
 
         }};
         nickelBridge = new DuctBridge("nickel-bridge") {{
-            requirements(Category.distribution, with(PermaItems.nickel, 20, Items.lead, 10));
+            requirements(Category.distribution, with(PermaItems.nickel, 10, Items.lead, 5));
             itemCapacity = 5;
+            health = 100;
         }};
 
+        nickelSorter = new Sorter("nickel-sorter") {{
+            requirements(Category.distribution, with(PermaItems.nickel, 10, Items.lead, 5));
+            itemCapacity = 2;
+            health = 90;
+        }};
+
+        nickelSorterInv = new Sorter("nickel-sorter-inverted") {{
+            requirements(Category.distribution, with(PermaItems.nickel, 10, Items.lead, 5));
+            itemCapacity = 2;
+            health = 90;
+            invert = true;
+        }};
+
+        nickelOverflow = new OverflowGate("nickel-overflow"){{
+           requirements(Category.distribution, with(PermaItems.nickel, 5, Items.lead, 5));
+           itemCapacity = 2;
+           health = 90;
+        }};
+
+        nickelUnderflow = new OverflowGate("nickel-underflow"){{
+            requirements(Category.distribution, with(PermaItems.nickel, 5, Items.lead, 5));
+            itemCapacity = 2;
+            health = 90;
+            invert = true;
+        }};
         //Production
         greenfactory = new GenericCrafter("greenfactory") {{
             requirements(Category.crafting, with(PermaItems.gallium, 3));
@@ -199,8 +238,8 @@ public class PermaBlocks {
             }};
                 //Drills
                 basicDrill = new Drill("basic-drill") {{
-                    drillTime = 400f;
-                    health = 100;
+                    drillTime = 800f;
+                    health = 200;
                     tier = 1;
                     size = 2;
                     squareSprite = true;

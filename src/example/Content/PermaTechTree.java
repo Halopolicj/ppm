@@ -32,7 +32,16 @@ public class PermaTechTree {
                       node(nickelBridge, () ->{
 
                       });
-                      //TODO add sorterts and gates
+                      node(nickelSorter, () -> {
+                         node(nickelSorterInv, () -> {
+
+                         }) ;
+                        node(nickelOverflow, () -> {
+                           node(nickelUnderflow, () -> {
+
+                           });
+                        });
+                      });
 
                    });
                 });
@@ -41,6 +50,11 @@ public class PermaTechTree {
             //walls
             node(nickelWall, () ->{
                 node(nickelWallBig, () -> {
+                    node(zircWall, () -> {
+                       node(zircWallBig, () -> {
+
+                       });
+                    });
                 });
 
                 //Turrets
@@ -81,15 +95,20 @@ public class PermaTechTree {
                 nodeProduce(Items.lead, () -> {
                     nodeProduce(bismuth, () -> {
                        nodeProduce(gallium, () -> {
+                            nodeProduce(zirconium, () -> {
 
-                       }) ;
+                            });
+                       });
                     });
-                    //TODO add something between lead and gallium, maybe bismuth?
+                    //TODO add something between lead and bismuth
                 });
 
                 //Liquids
                 nodeProduce(Liquids.water, () -> {
                    nodeProduce(Liquids.gallium, () -> {
+
+                   });
+                   nodeProduce(PermaLiquids.moltenBismuth, () -> {
 
                    });
                 });
