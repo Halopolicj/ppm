@@ -42,7 +42,6 @@ public class PermaPlanets {
                 allowLaunchToNumbered = false;
                 allowLaunchSchematics = true;
                 allowLaunchLoadout = false;
-                allowWaveSimulation = false;
                 allowSectorInvasion = false;
                 clearSectorOnLose = true;
                 prebuildBase = true;
